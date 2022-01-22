@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+/* main part where the form is to search for movies */
+header {
+  background: #2d3436;
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  padding: 10px;
+}
+/* css for form and input */
+form input {
+  border-radius: 30px;
+  height: 32px;
+  margin-top: 7px;
+  width: 215px;
+  outline: none;
+}
+
+input[placeholder] {
+  padding: 10px;
+}
