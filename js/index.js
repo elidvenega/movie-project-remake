@@ -1,15 +1,4 @@
-/* 4 Steps to solve any problem
-1.Make sure you 100% understand the problem. ask the right questions
-to get a clear picture of the problem.
- -Get API Data and successfully output to the DOM
- 2.Divide and conquer: Break a big problem into smaller sub-problems
-3.Don't be afraid to do as much research as you have to
-4.For bigger problems, write pseudo-code
-before writing the actual code.
- */
-
-/* Variables with data and variables that get the DOM */
-//API key and variables
+// API variables with keys
 const API =
   "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=f2342a6e3901fac463896c0b0839dad9&page=1";
 const IMG = "https://image.tmdb.org/t/p/w1280";
@@ -41,6 +30,24 @@ const getMovies = function (api) {
     });
 };
 
+// const getMovies = async function (api) {
+//   const apiFetch = await fetch(api);
+//   const resp = await resp.json();
+//   then((data) => {
+//     console.log(data.results);
+//     data.results.forEach((element) => {
+//       // creating elements for movies
+//       const el = document.createElement("div");
+//       const image = document.createElement("img");
+
+//       image.src = IMG + element.poster_path;
+//       el.appendChild(image);
+
+//       main.appendChild(el);
+//     });
+//   });
+// };
+
 getMovies(API);
 
 /* Event lisener to filter throug data */
@@ -50,14 +57,23 @@ getMovies(API);
 // Make best attemp to fix this
 
 // searches for movie
+// look up preventDefault
+// The preventDefault() method cancels the event if it is cancelable
+/* 
+Briefly:
+
+All the elements which allow a user to type something in or select something, have a value property with js. */
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   main.innerHTML = "";
 
   const searchTerm = search.value;
 
-  if (searchTerm) {
-    getMovies(SEARCH + searchTerm);
-    search.value = "";
-  }
+  // if (searchTerm) {
+  //   getMovies(SEARCH + searchTerm);
+  //   search.value = "";
+  // }
+
+  // terniary operator shorter syntax
+  searchTerm ? getMovies(SEARCH + searchTerm) : (search.value = "");
 });
