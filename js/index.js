@@ -6,10 +6,10 @@ const SEARCH =
   "https://api.themoviedb.org/3/search/movie?&api_key=f2342a6e3901fac463896c0b0839dad9&query=";
 
 // variables from the DOM
-const form = document.getElementById("form");
-const searchID = document.getElementById("search");
-const searchClass = document.getElementsByClassName("search");
-const main = document.getElementById("main");
+const form = document.querySelector("#form");
+const searchID = document.querySelector("#search");
+const searchClass = document.querySelectorAll(".search");
+const main = document.querySelector("#main");
 
 /* Function to fetch data */
 const getMovies = function (api) {
@@ -33,18 +33,17 @@ const getMovies = function (api) {
 // const getMovies = async function (api) {
 //   const apiFetch = await fetch(api);
 //   const resp = await resp.json();
-//   then((data) => {
-//     console.log(data.results);
-//     data.results.forEach((element) => {
-//       // creating elements for movies
-//       const el = document.createElement("div");
-//       const image = document.createElement("img");
+//   const data = await data.results;
+//   console.log(data.results);
+//   data.results.forEach((element) => {
+//     // creating elements for movies
+//     const el = document.createElement("div");
+//     const image = document.createElement("img");
 
-//       image.src = IMG + element.poster_path;
-//       el.appendChild(image);
+//     image.src = IMG + element.poster_path;
+//     el.appendChild(image);
 
-//       main.appendChild(el);
-//     });
+//     main.appendChild(el);
 //   });
 // };
 
