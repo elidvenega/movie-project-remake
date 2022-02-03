@@ -12,40 +12,44 @@ const searchClass = document.querySelectorAll(".search");
 const main = document.querySelector("#main");
 
 /* Function to fetch data */
-const getMovies = function (api) {
-  fetch(api)
-    .then((resp) => resp.json())
-    .then((data) => {
-      console.log(data.results);
-      data.results.forEach((element) => {
-        // creating elements for movies
-        const el = document.createElement("div");
-        const image = document.createElement("img");
+// const getMovies = function (api) {
+//   fetch(api)
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       console.log(data.results);
+//       data.results.forEach((element) => {
+//         // creating elements for movies
+//         const el = document.createElement("div");
+//         const image = document.createElement("img");
 
-        image.src = IMG + element.poster_path;
-        el.appendChild(image);
+//         image.src = IMG + element.poster_path;
+//         el.appendChild(image);
 
-        main.appendChild(el);
-      });
-    });
-};
-
-// const getMovies = async function (api) {
-//   const apiFetch = await fetch(api);
-//   const resp = await resp.json();
-//   const data = await data.results;
-//   console.log(data.results);
-//   data.results.forEach((element) => {
-//     // creating elements for movies
-//     const el = document.createElement("div");
-//     const image = document.createElement("img");
-
-//     image.src = IMG + element.poster_path;
-//     el.appendChild(image);
-
-//     main.appendChild(el);
-//   });
+//         main.appendChild(el);
+//       });
+//     });
 // };
+
+const getMovies = async function (api) {
+  try {
+    const apiFetch = await fetch(api);
+    const moviesInfo = await apiFetch.json();
+    // const data = await data.results;
+    // console.log(data.results);
+    moviesInfo.results.forEach((element) => {
+      // creating elements for movies
+      const el = document.createElement("div");
+      const image = document.createElement("img");
+
+      image.src = IMG + element.poster_path;
+      el.appendChild(image);
+
+      main.appendChild(el);
+    });
+  } catch (error) {
+    console.log("error", error);
+  }
+};
 
 getMovies(API);
 
